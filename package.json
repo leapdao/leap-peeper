@@ -1,0 +1,31 @@
+{
+  "name": "leap-peeper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "dependencies": {
+    "ethers": "^4.0.23",
+    "node-fetch": "^2.3.0"
+  },
+  "devDependencies": {
+    "husky": "^1.1.4",
+    "lint-staged": "^8.0.5",
+    "prettier": "^1.15.2",
+    "serverless": "^1.33.1",
+    "serverless-offline": "^4.2.1"
+  },
+  "scripts": {
+    "start": "serverless offline start -s dev",
+    "deploy:testnet": "NODE_URL=http://node1.testnet.leapdao.org:8645/ SLACK_CHANNEL='#testnet' sls deploy -s testnet",
+    "deploy:mainnet": "NODE_URL=http://node1.mainnet.leapdao.org:8645/ SLACK_CHANNEL='#mainnet' sls deploy -s mainnet",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.js": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "author": "",
+  "license": "ISC"
+}
