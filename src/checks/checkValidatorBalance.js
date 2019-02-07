@@ -8,7 +8,7 @@ module.exports = async (config, provider, db) => {
   const { signer } = await operator.slots(0);
   const costOfTenPeriods = ethers.utils.parseUnits('10', 'gwei').mul(100000 * 10); // 100k gas, 10gwei has price
   const signerBalance = await provider.getBalance(signer);
-  if (signerBalance < costOfTenPeriods) {
+  if (signerBalance.lt(costOfTenPeriods)) {
     if (await notNotifiedRecently(db, 'validatorBalance')) {
       return `
         💥 *Validator node is running out of ether.*
