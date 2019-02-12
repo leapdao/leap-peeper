@@ -17,8 +17,7 @@
   "scripts": {
     "start": "serverless offline start -s dev",
     "deploy:testnet": "NODE_URL=http://node1.testnet.leapdao.org:8645/ SLACK_CHANNEL='#testnet' sls deploy -s testnet",
-    "deploy:mainnet": "NODE_URL=http://node1.mainnet.leapdao.org:8645/ SLACK_CHANNEL='#mainnet' sls deploy -s mainnet",
-    "precommit": "lint-staged"
+    "deploy:mainnet": "NODE_URL=http://node1.mainnet.leapdao.org:8645/ SLACK_CHANNEL='#mainnet' sls deploy -s mainnet"
   },
   "lint-staged": {
     "src/**/*.js": [
@@ -26,6 +25,11 @@
       "git add"
     ]
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Kosta Korenkov <kosta@whoot.me>",
+  "license": "MPL-2.0",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
 }
