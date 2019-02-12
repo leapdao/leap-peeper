@@ -3,6 +3,8 @@ service: leap-peeper
 custom:
   serverless-offline:
     port: 3001
+  safeBlockTime: 180
+  safePeriodTime: 2100
 
 provider:
   name: aws
@@ -25,6 +27,8 @@ functions:
       SLACK_CHANNEL: ${env:SLACK_CHANNEL}
       NODE_URL: ${env:NODE_URL}
       ENV: ${opt:stage}
+      SAFE_BLOCK_TIME: ${env:SAFE_BLOCK_TIME, self:custom.safeBlockTime}
+      SAFE_PERIOD_TIME: ${env:SAFE_PERIOD_TIME, self:custom.safePeriodTime}
     events:
       - schedule: rate(1 minute)
       - http:
