@@ -5,11 +5,12 @@ module.exports = async (config, db) => {
 
   const lastBlockTime = parseInt(timestamp, 16);
   const timeAgo = Math.abs(lastBlockTime - Date.now() / 1000);
-
-  if (120 < timeAgo) {
+  const safeTime = Number(config.safeBlockTime);
+  if (safeTime < timeAgo) {
     if (await notNotifiedRecently(db, 'newBlock')) {
+      const safeTimeMinutes = Math.round((safeTime / 60) * 10) / 10;
       return `
-        💥 *Last block was created more than 2 minutes ago*
+        💥 *Last block was created more than ${safeTimeMinutes} minutes ago*
         Height: ${parseInt(number, 16)}
         Time: ${new Date(lastBlockTime * 1000)}
       `;

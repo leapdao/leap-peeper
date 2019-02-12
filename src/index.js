@@ -20,6 +20,8 @@ const handler = async (event, context, callback) => {
   const nodeRpcIsAvailable = !issues[0];
   if (nodeRpcIsAvailable) {
     config = await getNodeConfig(nodeUrl);
+    config.safeBlockTime = process.env.SAFE_BLOCK_TIME;
+    config.safePeriodTime = process.env.SAFE_PERIOD_TIME;
 
     const provider = new ethers.providers.JsonRpcProvider(config.rootNetwork);
 
