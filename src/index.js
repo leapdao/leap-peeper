@@ -2,6 +2,7 @@ const ethers = require('ethers');
 const { checkValidatorBalance, checkPeriodSubmission, checkBlockProduced, checkRpcAvailable } = require('./checks');
 const { respond, getNodeConfig, slackAlert } = require('./utils');
 const Db = require('./utils/db');
+const NETWORKS = require('./utils/knownNetworks');
 
 let simpledb;
 if (process.env.IS_OFFLINE !== 'true') {
@@ -23,7 +24,14 @@ const handler = async (event, context, callback) => {
     config.safeBlockTime = process.env.SAFE_BLOCK_TIME;
     config.safePeriodTime = process.env.SAFE_PERIOD_TIME;
 
-    const provider = new ethers.providers.JsonRpcProvider(config.rootNetwork);
+    let providerUrl = config.rootNetwork;
+    config.rootNetworkId = 4;
+    if (config.rootNetworkId) {
+      config.rootNetwork = NETWORKS[config.rootNetworkId];
+      providerUrl = config.rootNetwork.provider.http;
+    }
+
+    const provider = new ethers.providers.JsonRpcProvider(providerUrl);
 
     issues.push(await checkValidatorBalance(config, provider, db));
     issues.push(await checkPeriodSubmission(config, provider, db));
