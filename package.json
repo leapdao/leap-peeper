@@ -16,8 +16,8 @@
   },
   "scripts": {
     "start": "serverless offline start -s dev",
-    "deploy:testnet": "NODE_URL=http://node1.testnet.leapdao.org:8645/ SLACK_CHANNEL='#testnet' sls deploy -s testnet",
-    "deploy:mainnet": "NODE_URL=http://node1.mainnet.leapdao.org:8645/ SLACK_CHANNEL='#mainnet' sls deploy -s mainnet"
+    "deploy:testnet": "NODE_URL=https://testnet-node1.leapdao.org/ SLACK_CHANNEL='#testnet' sls deploy -s testnet",
+    "deploy:mainnet": "NODE_URL=https://mainnet-node1.leapdao.org/ SLACK_CHANNEL='#mainnet' sls deploy -s mainnet"
   },
   "lint-staged": {
     "src/**/*.js": [
