@@ -4,4 +4,6 @@ const slackAlert = require('./slackAlert');
 const getLastBlock = require('./getLastBlock');
 const notNotifiedRecently = require('./notNotifiedRecently');
 
-module.exports = { respond, getNodeConfig, slackAlert, getLastBlock, notNotifiedRecently };
+const easyDate = date => date.toLocaleString('en-GB', { timeZone: 'UTC' });
+
+module.exports = { respond, getNodeConfig, slackAlert, getLastBlock, notNotifiedRecently, easyDate };

@@ -25,10 +25,9 @@ const handler = async (event, context, callback) => {
     config.safePeriodTime = process.env.SAFE_PERIOD_TIME;
 
     let providerUrl = config.rootNetwork;
-    config.rootNetworkId = 4;
     if (config.rootNetworkId) {
-      config.rootNetwork = NETWORKS[config.rootNetworkId];
-      providerUrl = config.rootNetwork.provider.http;
+      config.rootNetworkConfig = NETWORKS[config.rootNetworkId];
+      providerUrl = config.rootNetworkConfig.provider.http;
     }
 
     const provider = new ethers.providers.JsonRpcProvider(providerUrl);
