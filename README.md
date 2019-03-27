@@ -10,32 +10,31 @@
 ### If it's the first time you use aws, you need to configure credentials
 https://github.com/serverless/serverless/blob/master/docs/providers/aws/guide/credentials.md
 
-## Development
+## Local development
 
-To start offline development:
+Start local deployment:
 ```
 NODE_URL=<node-json-rpc-url> SLACK_HOOK=<slack-hook-url> SLACK_CHANNEL=@kosta yarn start
 ```
+
+Open `http://localhost:3001` to trigger peeper check
 
 ## Deployment
 
-Dev:
+Dev (local):
 ```
 NODE_URL=<node-json-rpc-url> SLACK_HOOK=<slack-hook-url> SLACK_CHANNEL=@kosta yarn start
 ```
 
-Testnet:
+Testnet (AWS Lambda):
 ```
 SLACK_HOOK=<slack-hook-url> yarn deploy:testnet
 ```
 
-Mainnet:
+Mainnet (AWS Lambda):
 ```
 SLACK_HOOK=<slack-hook-url> yarn deploy:mainnet
 ```
-
-### Environments
-Environments and environment variables can be configured in `env.yml`. `dev` is the one used by default. 
 
 ## License
 Serverless Boilerplate is [MIT licensed](https://opensource.org/licenses/MIT).
