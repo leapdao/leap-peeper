@@ -28,6 +28,7 @@ functions:
       ENV: ${opt:stage}
       SAFE_BLOCK_TIME: ${env:SAFE_BLOCK_TIME, self:custom.safeBlockTime}
       SAFE_PERIOD_TIME: ${env:SAFE_PERIOD_TIME, self:custom.safePeriodTime}
+      VAL_BALANCE_THRESHOLD: ${env:VAL_BALANCE_THRESHOLD}
     events:
       - schedule: rate(1 minute)
       - http:
