@@ -16,8 +16,8 @@
   },
   "scripts": {
     "start": "serverless offline start -s dev",
-    "deploy:testnet": "NODE_URL=https://testnet-node1.leapdao.org/ SLACK_CHANNEL='#testnet' sls deploy -s testnet",
-    "deploy:mainnet": "NODE_URL=https://mainnet-node1.leapdao.org/ SLACK_CHANNEL='#mainnet' sls deploy -s mainnet"
+    "deploy:testnet": "NODE_URL=https://testnet-node1.leapdao.org/ SLACK_CHANNEL='#testnet' SAFE_PERIOD_TIME=3900 SAFE_BLOCK_TIME=180 sls deploy -s testnet",
+    "deploy:mainnet": "NODE_URL=https://mainnet-node1.leapdao.org/ SLACK_CHANNEL='#mainnet' SAFE_PERIOD_TIME=2700 SAFE_BLOCK_TIME=600 VAL_BALANCE_THRESHOLD=100000000000000000 sls deploy -s mainnet"
   },
   "lint-staged": {
     "src/**/*.js": [

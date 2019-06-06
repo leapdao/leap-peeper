@@ -23,6 +23,7 @@ const handler = async (event, context, callback) => {
     config = await getNodeConfig(nodeUrl);
     config.safeBlockTime = process.env.SAFE_BLOCK_TIME;
     config.safePeriodTime = process.env.SAFE_PERIOD_TIME;
+    config.valBalanceThreshold = process.env.VAL_BALANCE_THRESHOLD;
 
     let providerUrl = config.rootNetwork;
     if (config.rootNetworkId) {
